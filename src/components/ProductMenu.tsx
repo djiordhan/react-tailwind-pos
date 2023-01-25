@@ -41,13 +41,13 @@ const products = [
 ];
 
 
-const ProductMenu = ({ searchKey }: any) => {
+const ProductMenu = ({ searchKey, onSelect }: any) => {
     return <div className="h-full overflow-y-auto px-2">
     <div className="grid grid-cols-4 gap-4 pb-3">
         {
             products
                 .filter(product => !searchKey || product.name.toLowerCase().indexOf(searchKey.toLowerCase()) > -1)
-                .map(product => <ProductItem name={product.name} price={product.price}/>)
+                .map((product, index) => <ProductItem key={index} product={product} onSelect={onSelect}/>)
         }
     </div>
   </div>;

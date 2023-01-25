@@ -3,10 +3,12 @@ import burger from './assets/beef-burger.png';
 import './App.css';
 import ProductMenu from './components/ProductMenu';
 import ProductSearch from './components/ProductSearch';
+import Cart from './components/Cart';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const initItems: any[] = [];
   const [searchKey, setSearchKey] = useState('');
+  const [cartItems, setCartItems] = useState(initItems);
 
   return (
     <>
@@ -21,7 +23,21 @@ function App() {
               setSearchKey(searchKey);
             }}/>
             <div className="h-full overflow-hidden mt-4">
-              <ProductMenu searchKey={searchKey}/>
+              <ProductMenu searchKey={searchKey} onSelect={(product: any) => {
+                let found = false;
+                for (var i = 0; i < cartItems.length; i++) {
+                  if (cartItems[i].product.name === product.name) {
+                    cartItems[i].quantity = cartItems[i].quantity + 1;
+                    found = true;
+                  }
+                }
+
+                if (!found) {
+                  cartItems.push({ product, quantity: 1 });
+                }
+
+                setCartItems([...cartItems]);
+              }}/>
             </div>
           </div>
           <div className="w-5/12 flex flex-col bg-blue-gray-50 h-full bg-white pr-4 pl-2 py-4">
@@ -30,42 +46,25 @@ function App() {
                 <div className="h-16 text-center flex justify-center">
                   <div className="pl-8 text-left text-lg py-4 relative">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
-                    <div className="text-center absolute bg-cyan-500 text-white w-5 h-5 text-xs p-0 leading-5 rounded-full -right-2 top-3" x-text="getItemsCount()">13</div>
+                    <div className="text-center absolute bg-cyan-500 text-white w-5 h-5 text-xs p-0 leading-5 rounded-full -right-2 top-3">
+                      {
+                        cartItems.reduce((accumulator, item) => accumulator + item.quantity, 0)
+                      }
+                    </div>
                   </div>
                   <div className="flex-grow px-8 text-right text-lg py-4 relative">
                     <button className="text-blue-gray-300 hover:text-pink-500 focus:outline-none">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                       </svg>
                     </button>
                   </div>
                 </div>
-                <div className="flex-1 w-full px-4 overflow-auto">
-                  <div className="select-none mb-3 bg-blue-gray-50 rounded-lg w-full text-blue-gray-700 py-2 px-2 flex justify-center">
-                    <img alt="" className="rounded-lg h-10 w-10 bg-white shadow mr-2" src={burger} />
-                    <div className="flex-grow">
-                      <h5 className="text-sm" x-text="item.name">Beef Burger</h5>
-                      <p className="text-xs block" x-text="priceFormat(item.price)">Rp. 45.000</p>
-                    </div>
-                    <div className="py-1">
-                      <div className="w-28 grid grid-cols-3 gap-2 ml-2">
-                        <button x-on:click="addQty(item, -1)" className="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                          </svg>
-                        </button>
-                        <input type="text" className="bg-white rounded-lg text-center shadow focus:outline-none focus:shadow-lg text-sm" />
-                        <button x-on:click="addQty(item, 1)" className="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Cart items={cartItems} onCartUpdate={(newCartItems: any) => {
+                  setCartItems(newCartItems);
+                }}/>
               </div>
               <div className="select-none h-auto w-full text-center pt-3 pb-4 px-4">
                 <div className="flex mb-3 text-lg font-semibold text-blue-gray-700">
