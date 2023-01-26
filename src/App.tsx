@@ -6,11 +6,13 @@ import ProductSearch from './components/ProductSearch';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import button from './assets/button-21.mp3';
+import Receipt from './components/Receipt';
 
 function App() {
   const initItems: any[] = [];
   const [searchKey, setSearchKey] = useState('');
   const [cartItems, setCartItems] = useState(initItems);
+  const [showReceipt, setShowReceipt] = useState(false);
 
   return (
     <>
@@ -78,11 +80,15 @@ function App() {
                   setCartItems(newCartItems);
                 }} />
               </div>
-              <Checkout items={cartItems}/>
+              <Checkout items={cartItems} onSubmit={(cash: number) => {
+                setShowReceipt(true);
+              }}/>
             </div>
           </div>
         </div>
       </div>
+      {showReceipt && <Receipt onClose={() => setShowReceipt(false)}/>}
+      <div id="print-area" className="print-area"></div>
     </>
   );
 }

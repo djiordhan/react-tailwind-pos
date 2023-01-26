@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Checkout = ({ items }: any) => {
+const Checkout = ({ items, onSubmit }: any) => {
 
     const total = items.reduce((accumulator: number, item: any) => accumulator + (+item.product.price * +item.quantity), 0);
     const [cash, setCash] = useState(0);
@@ -46,7 +46,9 @@ const Checkout = ({ items }: any) => {
                     </div>
             )
         }
-        <button className="text-white rounded-2xl text-lg w-full py-3 focus:outline-none bg-cyan-500 hover:bg-cyan-600">
+        <button onClick={() => {
+            onSubmit(cash);
+        }} className="text-white rounded-2xl text-lg w-full py-3 focus:outline-none bg-cyan-500 hover:bg-cyan-600">
             SUBMIT
         </button>
     </div>;
