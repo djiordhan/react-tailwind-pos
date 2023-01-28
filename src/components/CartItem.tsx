@@ -22,7 +22,7 @@ const CartItem = ({ cartItem, onQuantityChange }: any) => {
         <input value={cartItem.quantity} onChange={event => {
             const qty = +event.target.value;
             onQuantityChange(qty);
-        }} type="text" className="bg-white rounded-lg text-center shadow focus:outline-none focus:shadow-lg text-sm" />
+        }} type="number" className="bg-white rounded-lg text-center shadow focus:outline-none focus:shadow-lg text-sm" />
         <button onClick={() => {
             const qty = +cartItem.quantity + 1
             onQuantityChange(qty);
