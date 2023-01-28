@@ -1,43 +1,43 @@
 import React from 'react';
 import ProductItem from './ProductItem';
+import burger from '../assets/beef-burger.png';
+import donut from '../assets/donut.png';
+import rice from '../assets/rice.jpg';
+import shrimp from '../assets/shrimp.jpg';
+import steak from '../assets/steak.jpg';
+import salad from '../assets/salad.jpg';
 
 const products = [
     {
         name: 'Burger',
+        image: burger,
         price: 50.00
     },
     {
         name: 'Donut',
-        price: 20.00
+        price: 20.00,
+        image: donut
     },
     {
-        name: 'Fries',
+        name: 'Rice',
+        image: rice,
         price: 40.00
     },
     {
-        name: 'Burger 2',
+        name: 'Shrimp',
+        image: shrimp,
         price: 50.00
     },
     {
-        name: 'Donut 2',
+        name: 'Steak',
+        image: steak,
         price: 20.00
     },
     {
-        name: 'Fries 2',
+        name: 'Salad',
+        image: salad,
         price: 40.00
-    },
-    {
-        name: 'Burger 3',
-        price: 50.00
-    },
-    {
-        name: 'Donut 3',
-        price: 20.00
-    },
-    {
-        name: 'Fries 3',
-        price: 40.00
-    }    
+    }
 ];
 
 
