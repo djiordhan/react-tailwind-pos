@@ -37,9 +37,9 @@ const Checkout = ({ items, onSubmit }: any) => {
             total > 0
             && (
                 change >= 0 ?
-                    <div className="flex mb-3 text-lg font-semibold bg-cyan-50 text-blue-gray-700 rounded-lg py-2 px-3">
-                        <div className="text-cyan-800">CHANGE</div>
-                        <div className="text-right flex-grow text-cyan-600">PHP {change}</div>
+                    <div className="flex mb-3 text-lg font-semibold bg-orange-50 text-blue-gray-700 rounded-lg py-2 px-3">
+                        <div className="text-orange-800">CHANGE</div>
+                        <div className="text-right flex-grow text-orange-600">PHP {change}</div>
                     </div> :
                     <div className="flex mb-3 text-lg font-semibold bg-pink-100 text-blue-gray-700 rounded-lg py-2 px-3">
                         <div className="text-right flex-grow text-pink-600">PHP {change}</div>
@@ -48,7 +48,7 @@ const Checkout = ({ items, onSubmit }: any) => {
         }
         <button onClick={() => {
             onSubmit(cash);
-        }} className="text-white rounded-2xl text-lg w-full py-3 focus:outline-none bg-cyan-500 hover:bg-cyan-600">
+        }} className="text-white rounded-2xl text-lg w-full py-3 focus:outline-none bg-orange-500 hover:bg-orange-600">
             SUBMIT
         </button>
     </div>;

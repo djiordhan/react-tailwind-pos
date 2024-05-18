@@ -1,11 +1,20 @@
 import React from 'react';
 import ProductItem from './ProductItem';
-import burger from '../assets/beef-burger.png';
-import donut from '../assets/donut.png';
+
 import rice from '../assets/rice.jpg';
 import shrimp from '../assets/shrimp.jpg';
 import steak from '../assets/steak.jpg';
 import salad from '../assets/salad.jpg';
+
+import burger from '../assets-new/burger.jpeg';
+import donut from '../assets-new/donut.jpeg';
+import sandwich from '../assets-new/sandwich.jpeg';
+import cinnamonroll from '../assets-new/cinnamonroll.jpeg';
+import crosaint from '../assets-new/crosaint.jpeg';
+import espresso from '../assets-new/espresso.jpeg';
+import frappe from '../assets-new/frappe.jpeg';
+import milktea from '../assets-new/milktea.jpeg';
+import blackcoffee from '../assets-new/blackcoffee.jpeg';
 
 const products = [
     {
@@ -19,23 +28,38 @@ const products = [
         image: donut
     },
     {
-        name: 'Rice',
-        image: rice,
+        name: 'Sandwich',
+        image: sandwich,
         price: 40.00
     },
     {
-        name: 'Shrimp',
-        image: shrimp,
+        name: 'Cinnamon Roll',
+        image: cinnamonroll,
         price: 50.00
     },
     {
-        name: 'Steak',
-        image: steak,
+        name: 'Crosaint',
+        image: crosaint,
         price: 20.00
     },
     {
-        name: 'Salad',
-        image: salad,
+        name: 'Espresso',
+        image: espresso,
+        price: 40.00
+    },
+    {
+        name: 'Frappe',
+        image: frappe,
+        price: 40.00
+    },
+    {
+        name: 'Milk Tea',
+        image: milktea,
+        price: 40.00
+    },
+    {
+        name: 'Black Coffee',
+        image: blackcoffee,
         price: 40.00
     }
 ];

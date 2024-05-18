@@ -63,7 +63,7 @@ const Receipt = ({ items, cash, onProceed, onClose } : any) => {
         </div>
       </div>
       <div className="p-4 w-full">
-        <button onClick={() => { onProceed(); }} className="bg-cyan-500 text-white text-lg px-4 py-3 rounded-2xl w-full focus:outline-none">PROCEED</button>
+        <button onClick={() => { onProceed(); }} className="bg-orange-500 text-white text-lg px-4 py-3 rounded-2xl w-full focus:outline-none">PROCEED</button>
       </div>
     </div>
   </div>;

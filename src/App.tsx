@@ -19,7 +19,7 @@ function App() {
     <>
       <div className="hide-print flex flex-row h-screen antialiased text-blue-gray-800">
         <div className="flex flex-row w-auto flex-shrink-0 pl-4 pr-2 py-4">
-          <div className="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-cyan-500 rounded-3xl">
+          <div className="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-orange-500 rounded-3xl">
           </div>
         </div>
         <div className="flex-grow flex">
@@ -56,7 +56,7 @@ function App() {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
-                        <div className="text-center absolute bg-cyan-500 text-white w-5 h-5 text-xs p-0 leading-5 rounded-full -right-2 top-3">
+                        <div className="text-center absolute bg-orange-500 text-white w-5 h-5 text-xs p-0 leading-5 rounded-full -right-2 top-3">
                           {
                             cartItems.reduce((accumulator, item) => accumulator + item.quantity, 0)
                           }
