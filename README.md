@@ -1,3 +1,4 @@
-# react-vite-stackblitz
+# react-tailwind-pos
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vitejs-vite-q89fym)
+React version of https://github.com/emsifa/tailwind-pos
+
