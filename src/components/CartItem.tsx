@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const CartItem = ({ cartItem, onQuantityChange }: any) => {
 
     return <div className="select-none mb-3 bg-blue-gray-50 rounded-lg w-full text-blue-gray-700 py-2 px-2 flex justify-center">
-    <img className="rounded-lg h-10 w-10 bg-white shadow mr-2" src={cartItem.product.image} />
+    <img className="rounded-lg h-10 w-10 bg-white shadow mr-2" src={cartItem.product.imagePath} />
     <div className="flex-grow">
       <h5 className="text-sm">{cartItem.product.name}</h5>
       <p className="text-xs block">PHP {cartItem.product.price}</p>

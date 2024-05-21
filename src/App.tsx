@@ -92,21 +92,48 @@ function App() {
           showReceipt &&
           <Receipt cash={cash} items={cartItems}
             onProceed={() => {
-              const receiptContent: any = document.getElementById('receipt-content');
-              const printArea: any = document.getElementById('print-area');
-              printArea.innerHTML = receiptContent.innerHTML;
-              window.print();
-              printArea.innerHTML = '';
-              setShowReceipt(false);
+              const transactionData = {
+                total: cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0),
+                payment: cash,
+                change: cash - cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0),
+                transactionDate: new Date().toISOString(),
+                carts: cartItems.map(item => ({
+                  productName: item.product.name,
+                  quantity: item.quantity,
+                  price: item.product.price
+                }))
+              };
+
+              fetch('/transactions', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(transactionData)
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log('Transaction successful:', data);
+
+                  const receiptContent: any = document.getElementById('receipt-content');
+                  const printArea: any = document.getElementById('print-area');
+                  printArea.innerHTML = receiptContent.innerHTML;
+                  window.print();
+                  printArea.innerHTML = '';
+                  setShowReceipt(false);
 
 
-              setCartItems([]);
-              const sound = new Audio();
-              sound.src = button;
-              sound.play();
+                  setCartItems([]);
+                  const sound = new Audio();
+                  sound.src = button;
+                  sound.play();
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
             }}
-            onClose={() => setShowReceipt(false)} 
-            />
+            onClose={() => setShowReceipt(false)}
+          />
         }
       </div>
       <div id="print-area" className="print-area"></div>
