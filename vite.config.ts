@@ -12,12 +12,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/products': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8082',
         changeOrigin: true,
         secure: false,
       },
       '/transactions': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8081',
         changeOrigin: true,
         secure: false,
       },
